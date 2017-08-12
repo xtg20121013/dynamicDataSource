@@ -6,13 +6,35 @@
 
 ##### 1. 在配置文件applicaiton.yml中加入数据源配置
 
-a. 默认数据源：同spring默认配置
+a. 默认数据源：同spring默认配置，例如：
 
-![默认数据源配置](https://upload-images.jianshu.io/upload_images/3298892-04869bcc1c776090.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
+	spring:
+	  mvc:
+	    static-path-pattern: /static/**
+	  datasource:
+	    url: jdbc:mysql://localhost/db_master
+	    username: root
+	    password: 78451200
+	    driver-class-name: com.mysql.jdbc.Driver
+	    max-idle: 2
 
-b. 其他数据源：可配置多个，务必指定name，需在项目中指定，db.datasources下其他配置同spring默认
+b. 其他数据源：可配置多个，务必指定name，需在项目中指定，db.datasources下其他配置同spring默认，例如：
 
-![其他数据源配置](https://upload-images.jianshu.io/upload_images/3298892-02a5156c2c165888.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/500)
+	db:
+	  datasources:
+	    - name: s1
+	      url: jdbc:mysql://localhost/db_slave
+	      username: root
+	      password: 78451200
+	      driver-class-name: com.mysql.jdbc.Driver
+	      max-idle: 3
+	    - name: s2
+	      url: jdbc:mysql://localhost/db_slave
+	      username: root
+	      password: 78451200
+	      driver-class-name: com.mysql.jdbc.Driver
+	      max-idle: 4
+
 
 ##### 2. 引入dynamicDataSource配置注册类
 在@Configuration标注的配置类加上注解@import(DynamicDataSourceRegistrar.class)
