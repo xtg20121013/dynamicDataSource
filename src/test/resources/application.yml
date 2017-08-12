@@ -1,0 +1,41 @@
+foo:
+  list:
+    - name: my name
+      description: my description
+    - name: another name
+      description: another description
+spring:
+  mvc:
+    static-path-pattern: /static/**
+  datasource:
+    url: jdbc:mysql://localhost/db_master
+    username: root
+    password: 78451200
+    driver-class-name: com.mysql.jdbc.Driver
+    max-idle: 2
+
+db:
+  datasources:
+    - name: s1
+      url: jdbc:mysql://localhost/db_slave
+      username: root
+      password: 78451200
+      driver-class-name: com.mysql.jdbc.Driver
+      max-idle: 3
+    - name: s2
+      url: jdbc:mysql://localhost/db_slave
+      username: root
+      password: 78451200
+      driver-class-name: com.mysql.jdbc.Driver
+      max-idle: 4
+
+
+#  resources:
+#    static-locations: /resources/**
+
+---
+spring:
+  profiles: dev
+foo:
+  list:
+     - name: my another name
