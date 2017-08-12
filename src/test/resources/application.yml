@@ -1,9 +1,3 @@
-foo:
-  list:
-    - name: my name
-      description: my description
-    - name: another name
-      description: another description
 spring:
   mvc:
     static-path-pattern: /static/**
@@ -28,14 +22,3 @@ db:
       password: 78451200
       driver-class-name: com.mysql.jdbc.Driver
       max-idle: 4
-
-
-#  resources:
-#    static-locations: /resources/**
-
----
-spring:
-  profiles: dev
-foo:
-  list:
-     - name: my another name
